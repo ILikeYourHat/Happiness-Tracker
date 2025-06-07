@@ -2,12 +2,14 @@ package io.github.ilikeyourhat.happinesstracker
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import java.awt.Dimension
 
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
-        title = "Happiness Tracker",
+        title = "Happiness Tracker"
     ) {
+        window.minimumSize = Dimension(640, 480)
         App()
     }
 }
