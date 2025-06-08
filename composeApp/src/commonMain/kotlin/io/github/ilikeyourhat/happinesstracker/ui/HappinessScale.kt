@@ -5,19 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.SentimentDissatisfied
-import androidx.compose.material.icons.filled.SentimentNeutral
-import androidx.compose.material.icons.filled.SentimentSatisfied
-import androidx.compose.material.icons.filled.SentimentVeryDissatisfied
-import androidx.compose.material.icons.filled.SentimentVerySatisfied
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Shapes
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
 
@@ -30,37 +23,27 @@ fun HappinessScale(
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         HappinessButton(
-            icon = Icons.Filled.SentimentVerySatisfied,
-            description = "Great",
-            backgroundColor = Color(0xFF4CAF50),
+            level = HappinessLevel.VERY_HAPPY,
             selected = selectedLevel == HappinessLevel.VERY_HAPPY,
             onClick = { onHappinessSelected(HappinessLevel.VERY_HAPPY) }
         )
         HappinessButton(
-            icon = Icons.Filled.SentimentSatisfied,
-            description = "Good",
-            backgroundColor = Color(0xFF8BC34A),
+            level = HappinessLevel.HAPPY,
             selected = selectedLevel == HappinessLevel.HAPPY,
             onClick = { onHappinessSelected(HappinessLevel.HAPPY) }
         )
         HappinessButton(
-            icon = Icons.Filled.SentimentNeutral,
-            description = "Okay",
-            backgroundColor = Color(0xFFFFC107),
+            level = HappinessLevel.NEUTRAL,
             selected = selectedLevel == HappinessLevel.NEUTRAL,
             onClick = { onHappinessSelected(HappinessLevel.NEUTRAL) }
         )
         HappinessButton(
-            icon = Icons.Filled.SentimentDissatisfied,
-            description = "Bad",
-            backgroundColor = Color(0xFFFF9800),
+            level = HappinessLevel.UNHAPPY,
             selected = selectedLevel == HappinessLevel.UNHAPPY,
             onClick = { onHappinessSelected(HappinessLevel.UNHAPPY) }
         )
         HappinessButton(
-            icon = Icons.Filled.SentimentVeryDissatisfied,
-            description = "Terrible",
-            backgroundColor = Color(0xFFF44336),
+            level = HappinessLevel.VERY_UNHAPPY,
             selected = selectedLevel == HappinessLevel.VERY_UNHAPPY,
             onClick = { onHappinessSelected(HappinessLevel.VERY_UNHAPPY) }
         )
@@ -69,9 +52,7 @@ fun HappinessScale(
 
 @Composable
 fun HappinessButton(
-    icon: ImageVector,
-    description: String,
-    backgroundColor: Color,
+    level: HappinessLevel,
     selected: Boolean,
     onClick: () -> Unit = {}
 ) {
@@ -79,12 +60,15 @@ fun HappinessButton(
         onClick = onClick,
         modifier = Modifier
             .background(
-                color = backgroundColor,
-                shape = Shapes().medium
+                color = level.color,
+                shape = RoundedCornerShape(8.dp)
             )
-            .border(getBorderWhenSelected(selected))
+            .border(
+                border = getBorderWhenSelected(selected),
+                shape = RoundedCornerShape(8.dp)
+            )
     ) {
-        Icon(icon, description)
+        Icon(level.icon, level.displayName)
     }
 }
 

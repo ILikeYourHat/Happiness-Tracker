@@ -10,15 +10,15 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel: ViewModel() {
 
-    private val happinessDatabase = HappinessDatabase()
+    private val happinessDatabase = HappinessDatabase
 
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState = _uiState.asStateFlow()
 
     fun onResume() {
         viewModelScope.launch {
-            val lastHappinessLevel = happinessDatabase.getHappinessLevelForToday()
-            _uiState.value = HomeUiState(selectedHappinessLevel = lastHappinessLevel)
+            val entry = happinessDatabase.getHappinessLevelForToday()
+            _uiState.value = HomeUiState(selectedHappinessLevel = entry?.happinessLevel)
         }
     }
 
