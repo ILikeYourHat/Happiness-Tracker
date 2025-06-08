@@ -17,7 +17,7 @@ import io.github.ilikeyourhat.happinesstracker.navigation.Screen
 import io.github.ilikeyourhat.happinesstracker.ui.BottomNavigationBar
 import io.github.ilikeyourhat.happinesstracker.ui.HistoryScreen
 
-import io.github.ilikeyourhat.happinesstracker.ui.HomeScreen
+import io.github.ilikeyourhat.happinesstracker.ui.home.HomeScreen
 import io.github.ilikeyourhat.happinesstracker.ui.SettingsScreen
 import io.github.ilikeyourhat.happinesstracker.ui.StatsScreen
 

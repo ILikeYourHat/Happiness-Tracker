@@ -1,4 +1,4 @@
-package io.github.ilikeyourhat.happinesstracker.ui
+package io.github.ilikeyourhat.happinesstracker.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,16 +7,36 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
+import androidx.lifecycle.viewmodel.compose.viewModel
 import happinesstracker.composeapp.generated.resources.Res
 import happinesstracker.composeapp.generated.resources.title
+import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
+import io.github.ilikeyourhat.happinesstracker.ui.HappinessScale
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun HomeScreen() {
+    val viewModel = viewModel { HomeViewModel() }
+    val state by viewModel.uiState.collectAsState()
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+        viewModel.onResume()
+    }
+    HomeScreen(state, viewModel::onHappinessLevelClicked)
+}
+
+@Composable
+fun HomeScreen(
+    uiState: HomeUiState,
+    onHappinessLevelClicked: (HappinessLevel) -> Unit,
+) {
     Column(
         modifier = Modifier.fillMaxSize()
             .padding(16.dp),
@@ -29,8 +49,9 @@ fun HomeScreen() {
             textAlign = TextAlign.Center
         )
         HappinessScale(
+            selectedLevel = uiState.selectedHappinessLevel,
             onHappinessSelected = { level ->
-                println("Selected happiness level: $level")
+                onHappinessLevelClicked(level)
             }
         )
     }
