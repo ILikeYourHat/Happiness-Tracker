@@ -6,10 +6,20 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.androidxRoom)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
+    targets.configureEach {
+        compilations.configureEach {
+            compileTaskProvider.get().compilerOptions {
+                freeCompilerArgs.add("-Xexpect-actual-classes")
+            }
+        }
+    }
+
     androidTarget {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
@@ -48,6 +58,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel.compose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.androidx.navigation.compose)
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.androidx.sqlite.bundled)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -86,7 +98,26 @@ android {
     }
 }
 
+ksp {
+    // https://issuetracker.google.com/u/3/issues/379159770
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
 dependencies {
+        listOf(
+            "kspAndroid",
+            "kspDesktop",
+            "kspIosSimulatorArm64",
+            "kspIosX64",
+            "kspIosArm64",
+            "kspCommonMainMetadata",
+        ).forEach {
+            add(it, libs.androidx.room.compiler)
+        }
     debugImplementation(compose.uiTooling)
 }
 

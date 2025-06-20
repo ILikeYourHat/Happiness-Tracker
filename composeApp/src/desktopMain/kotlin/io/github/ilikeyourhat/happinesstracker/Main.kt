@@ -5,6 +5,7 @@ import androidx.compose.ui.window.application
 import java.awt.Dimension
 
 fun main() = application {
+    DbConstructorContainer.databaseBuilder = getDatabaseBuilder()
     Window(
         onCloseRequest = ::exitApplication,
         title = "Happiness Tracker"

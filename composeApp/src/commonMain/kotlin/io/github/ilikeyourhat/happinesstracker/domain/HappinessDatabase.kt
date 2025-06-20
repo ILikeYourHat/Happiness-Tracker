@@ -1,5 +1,7 @@
 package io.github.ilikeyourhat.happinesstracker.domain
 
+import io.github.ilikeyourhat.happinesstracker.domain.db.HappinessLevelEntity
+import io.github.ilikeyourhat.happinesstracker.domain.db.getRoomDatabase
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
@@ -7,30 +9,28 @@ import kotlinx.datetime.toLocalDateTime
 
 object HappinessDatabase {
 
-    private val entries = mutableMapOf<LocalDate, HappinessLevel>()
+    private val roomDatabase = getRoomDatabase()
 
     suspend fun getHappinessLevelForToday(): HappinessEntry? {
         val today = today()
-        val level = entries[today]
-        return if (level != null) {
-            HappinessEntry(today, level)
-        } else {
-            null
-        }
+        return roomDatabase.getDao().getAll()
+            .firstOrNull { it.date == today.toString() }
+            ?.let { HappinessEntry(LocalDate.parse(it.date), HappinessLevel.VERY_UNHAPPY) }
     }
 
     suspend fun saveHappinessLevelForToday(level: HappinessLevel?) {
         val today = today()
-        if (level == null) {
-            entries.remove(today)
-        } else {
-            entries[today] = level
-        }
+        roomDatabase.getDao().insert(
+            HappinessLevelEntity(
+                date = today.toString(),
+                level = level?.name ?: "sad"
+            )
+        )
     }
 
     suspend fun getHappinessLevelHistory(): List<HappinessEntry> {
-        return entries.toList()
-            .map { (date, level) -> HappinessEntry(date, level) }
+        return roomDatabase.getDao().getAll()
+            .map { (_, date, level) -> HappinessEntry(LocalDate.parse(date), HappinessLevel.VERY_UNHAPPY) }
             .sortedBy { it.date }
     }
 
