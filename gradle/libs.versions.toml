@@ -1,21 +1,23 @@
 [versions]
-agp = "8.10.1"
+agp = "8.11.0"
 android-compileSdk = "35"
 android-minSdk = "24"
 android-targetSdk = "35"
 androidx-activity = "1.10.1"
-androidx-lifecycle = "2.9.0"
-androidx-navigation = "2.9.0-beta01"
+androidx-lifecycle = "2.9.1"
+androidx-navigation = "2.9.0-beta03"
 androidx-room = "2.7.2"
 androidx-sqliteBundled = "2.5.2"
 
-compose-hotReload = "1.0.0-alpha10"
-compose-multiplatform = "1.8.1"
+compose-hotReload = "1.0.0-beta01"
+compose-multiplatform = "1.8.2"
 
-kotlin = "2.1.21"
+kotlin = "2.2.0"
 kotlinx-coroutines = "1.10.2"
-kotlinx-datetime = "0.6.2"
-ksp = "2.1.21-2.0.2"
+kotlinx-datetime = "0.7.0"
+ksp = "2.2.0-2.0.2"
+
+metro = "0.4.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
@@ -41,3 +43,5 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+metro = { id = "dev.zacsweers.metro", version.ref = "metro" }

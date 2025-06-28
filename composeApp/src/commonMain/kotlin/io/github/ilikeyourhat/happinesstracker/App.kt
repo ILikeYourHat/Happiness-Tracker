@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 import io.github.ilikeyourhat.happinesstracker.navigation.Screen
 import io.github.ilikeyourhat.happinesstracker.ui.BottomNavigationBar
 import io.github.ilikeyourhat.happinesstracker.ui.history.HistoryScreen
@@ -23,6 +24,7 @@ import io.github.ilikeyourhat.happinesstracker.ui.StatsScreen
 
 @Composable
 fun App(
+    appGraph: AppGraph,
     navController: NavHostController = rememberNavController()
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
@@ -40,13 +42,13 @@ fun App(
                     .safeContentPadding()
             ) {
                 composable(route = Screen.Home.route) {
-                    HomeScreen()
+                    HomeScreen(appGraph)
                 }
                 composable(route = Screen.Stats.route) {
                     StatsScreen()
                 }
                 composable(route = Screen.History.route) {
-                    HistoryScreen()
+                    HistoryScreen(appGraph)
                 }
                 composable(route = Screen.Settings.route) {
                     SettingsScreen()

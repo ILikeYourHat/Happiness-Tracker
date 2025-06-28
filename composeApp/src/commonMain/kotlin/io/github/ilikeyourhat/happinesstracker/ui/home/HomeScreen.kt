@@ -18,13 +18,14 @@ import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import happinesstracker.composeapp.generated.resources.Res
 import happinesstracker.composeapp.generated.resources.title
+import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
 import io.github.ilikeyourhat.happinesstracker.ui.HappinessScale
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun HomeScreen() {
-    val viewModel = viewModel { HomeViewModel() }
+fun HomeScreen(appGraph: AppGraph) {
+    val viewModel = viewModel { appGraph.homeViewModel }
     val state by viewModel.uiState.collectAsState()
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
         viewModel.onResume()

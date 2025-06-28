@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -23,11 +22,11 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
-import kotlinx.datetime.format
+import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 
 @Composable
-fun HistoryScreen() {
-    val viewModel = viewModel { HistoryViewModel() }
+fun HistoryScreen(appGraph: AppGraph) {
+    val viewModel = viewModel { appGraph.historyViewModel }
     val state by viewModel.uiState.collectAsState()
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
         viewModel.onResume()

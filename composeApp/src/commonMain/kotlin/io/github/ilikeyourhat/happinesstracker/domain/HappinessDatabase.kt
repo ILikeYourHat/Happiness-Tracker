@@ -1,15 +1,18 @@
 package io.github.ilikeyourhat.happinesstracker.domain
 
+import dev.zacsweers.metro.Inject
+import io.github.ilikeyourhat.happinesstracker.domain.db.AppDatabase
 import io.github.ilikeyourhat.happinesstracker.domain.db.HappinessLevelEntity
-import io.github.ilikeyourhat.happinesstracker.domain.db.getRoomDatabase
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
-object HappinessDatabase {
-
-    private val roomDatabase = getRoomDatabase()
+@Inject
+class HappinessDatabase(
+    private val roomDatabase: AppDatabase
+) {
 
     suspend fun getHappinessLevelForToday(): HappinessEntry? {
         val today = today()
@@ -34,6 +37,7 @@ object HappinessDatabase {
             .sortedBy { it.date }
     }
 
+    @OptIn(ExperimentalTime::class)
     private fun today(): LocalDate {
         return Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
     }

@@ -1,11 +1,11 @@
 package io.github.ilikeyourhat.happinesstracker
 
 import android.app.Application
+import dev.zacsweers.metro.createGraphFactory
 
 class HappinessTrackerApplication : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
-        DbConstructorContainer.databaseBuilder = getDatabaseBuilder(this)
+    val appGraph by lazy {
+        createGraphFactory<AndroidAppGraph.Factory>().create(this)
     }
 }

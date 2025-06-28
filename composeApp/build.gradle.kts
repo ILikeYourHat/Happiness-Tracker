@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.metro)
 }
 
 kotlin {
