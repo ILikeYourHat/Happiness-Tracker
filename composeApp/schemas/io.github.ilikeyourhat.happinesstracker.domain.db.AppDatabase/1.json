@@ -2,18 +2,12 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "a03cadb63e3d02851a3b79e0daa2bb66",
+    "identityHash": "c475cae4a199c83e7dbbfda31707a278",
     "entities": [
       {
         "tableName": "HappinessLevelEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` TEXT NOT NULL, `level` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`date` TEXT NOT NULL, `level` INTEGER NOT NULL, PRIMARY KEY(`date`))",
         "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "date",
             "columnName": "date",
@@ -23,21 +17,21 @@
           {
             "fieldPath": "level",
             "columnName": "level",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
         "primaryKey": {
-          "autoGenerate": true,
+          "autoGenerate": false,
           "columnNames": [
-            "id"
+            "date"
           ]
         }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a03cadb63e3d02851a3b79e0daa2bb66')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c475cae4a199c83e7dbbfda31707a278')"
     ]
   }
 }

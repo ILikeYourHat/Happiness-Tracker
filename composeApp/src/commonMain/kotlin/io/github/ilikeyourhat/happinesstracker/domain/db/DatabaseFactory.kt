@@ -12,7 +12,7 @@ class DatabaseFactory(
 
     fun create(): AppDatabase {
         return provider.provideDatabaseBuilder()
-            .fallbackToDestructiveMigrationOnDowngrade(dropAllTables = true)
+            .fallbackToDestructiveMigration(dropAllTables = true)
             .setDriver(BundledSQLiteDriver())
             .setQueryCoroutineContext(Dispatchers.IO)
             .build()

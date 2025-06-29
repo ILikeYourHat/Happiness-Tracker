@@ -19,8 +19,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 
@@ -28,9 +26,6 @@ import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 fun HistoryScreen(appGraph: AppGraph) {
     val viewModel = viewModel { appGraph.historyViewModel }
     val state by viewModel.uiState.collectAsState()
-    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
-        viewModel.onResume()
-    }
     HistoryScreen(state)
 }
 

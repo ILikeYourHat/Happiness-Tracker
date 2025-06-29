@@ -2,26 +2,22 @@ package io.github.ilikeyourhat.happinesstracker.ui.history
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.zacsweers.metro.AppScope
-import dev.zacsweers.metro.ContributesIntoMap
 import dev.zacsweers.metro.Inject
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessDatabase
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 
 @Inject
 class HistoryViewModel(
-    private val database: HappinessDatabase
+    database: HappinessDatabase
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(HistoryUiState())
-    val uiState = _uiState.asStateFlow()
-
-    fun onResume() {
-        viewModelScope.launch {
-            val historyItems = database.getHappinessLevelHistory()
-            _uiState.value = HistoryUiState(historyItems = historyItems)
-        }
-    }
+    val uiState = database.getHappinessLevelHistoryUpdates()
+        .map { historyItems -> HistoryUiState(historyItems) }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = HistoryUiState(),
+        )
 }

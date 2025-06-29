@@ -11,7 +11,7 @@ import java.io.File
 class DatabaseBuilderProviderImpl : DatabaseBuilderProvider {
 
     override fun provideDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
-        val dbFile = File(System.getProperty("java.io.tmpdir"), "my_room.db")
+        val dbFile = File(System.getProperty("java.io.tmpdir"), "room.db")
         return Room.databaseBuilder<AppDatabase>(
             name = dbFile.absolutePath,
         )
