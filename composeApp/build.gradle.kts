@@ -1,5 +1,6 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     alias(libs.plugins.android.application)
@@ -64,6 +65,12 @@ kotlin {
             implementation(libs.kotlinx.coroutines.swing)
         }
     }
+
+    tasks.withType<KotlinCompile>().configureEach {
+        compilerOptions {
+            freeCompilerArgs.add("-Xexpect-actual-classes")
+        }
+    }
 }
 
 android {
@@ -103,8 +110,7 @@ dependencies {
             "kspDesktop",
             "kspIosSimulatorArm64",
             "kspIosX64",
-            "kspIosArm64",
-            "kspCommonMainMetadata",
+            "kspIosArm64"
         ).forEach {
             add(it, libs.androidx.room.compiler)
         }
