@@ -9,6 +9,7 @@ androidx-navigation = "2.9.0-beta03"
 androidx-room = "2.7.2"
 androidx-sqliteBundled = "2.5.2"
 
+caupain = "1.5.1"
 compose-hotReload = "1.0.0-beta01"
 compose-multiplatform = "1.8.2"
 
@@ -37,6 +38,7 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 androidx-room = { id = "androidx.room", version.ref = "androidx-room" }
 
+caupain = { id = "com.deezer.caupain", version.ref = "caupain" }
 compose-hotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "compose-hotReload" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

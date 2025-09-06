@@ -1,4 +1,9 @@
+import com.deezer.caupain.model.StabilityLevelPolicy
+import com.deezer.caupain.plugin.DependenciesUpdateTask
+
 plugins {
+    alias(libs.plugins.caupain)
+
     // this is necessary to avoid the plugins to be loaded multiple times
     // in each subproject's classloader
     alias(libs.plugins.android.application) apply false
@@ -9,4 +14,8 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.metro) apply false
+}
+
+tasks.withType<DependenciesUpdateTask> {
+    selectIf(StabilityLevelPolicy)
 }
