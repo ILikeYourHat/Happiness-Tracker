@@ -19,23 +19,12 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "ComposeApp"
-            isStatic = true
-        }
-    }
-    
+
     jvm("desktop")
-    
+
     sourceSets {
         val desktopMain by getting
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -105,15 +94,12 @@ room {
 }
 
 dependencies {
-        listOf(
-            "kspAndroid",
-            "kspDesktop",
-            "kspIosSimulatorArm64",
-            "kspIosX64",
-            "kspIosArm64"
-        ).forEach {
-            add(it, libs.androidx.room.compiler)
-        }
+    listOf(
+        "kspAndroid",
+        "kspDesktop",
+    ).forEach {
+        add(it, libs.androidx.room.compiler)
+    }
     debugImplementation(compose.uiTooling)
 }
 

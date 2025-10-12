@@ -33,14 +33,14 @@ fun HistoryScreen(appGraph: AppGraph) {
 fun HistoryScreen(uiState: HistoryUiState) {
     Column(
         modifier = Modifier.fillMaxSize()
-            .padding(16.dp)
+            .padding(8.dp)
     ) {
         Text(
             text = "History Screen",
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxSize()
-                .padding(16.dp),
+                .padding(8.dp),
         )
         LazyColumn(
             modifier = Modifier.fillMaxWidth()
