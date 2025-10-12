@@ -46,6 +46,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         desktopMain.dependencies {
+            implementation(compose.desktop.currentOs)
             implementation(libs.appdirs)
             implementation(libs.kotlinx.coroutines.swing)
         }
