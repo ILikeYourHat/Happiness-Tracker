@@ -8,6 +8,7 @@ androidx-lifecycle = "2.9.4"
 androidx-navigation = "2.9.0"
 androidx-room = "2.8.2"
 androidx-sqliteBundled = "2.6.1"
+appdirs = "1.5.0"
 
 caupain = "1.6.1"
 compose-hotReload = "1.0.0-rc02"
@@ -28,6 +29,7 @@ androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navi
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
 androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "androidx-sqliteBundled" }
+appdirs = { module = "net.harawata:appdirs", version.ref = "appdirs" }
 
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
