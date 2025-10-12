@@ -19,7 +19,7 @@ import io.github.ilikeyourhat.happinesstracker.ui.BottomNavigationBar
 import io.github.ilikeyourhat.happinesstracker.ui.history.HistoryScreen
 
 import io.github.ilikeyourhat.happinesstracker.ui.home.HomeScreen
-import io.github.ilikeyourhat.happinesstracker.ui.SettingsScreen
+import io.github.ilikeyourhat.happinesstracker.ui.settings.SettingsScreen
 import io.github.ilikeyourhat.happinesstracker.ui.StatsScreen
 
 @Composable
