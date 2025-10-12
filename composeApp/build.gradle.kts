@@ -108,9 +108,17 @@ compose.desktop {
         mainClass = "io.github.ilikeyourhat.happinesstracker.MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "io.github.ilikeyourhat.happinesstracker"
+            targetFormats(TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "HappinessTracker"
             packageVersion = "1.0.0"
+            licenseFile.set(rootProject.file("LICENSE"))
+
+            windows {
+                iconFile.set(project.file("src/desktopMain/ic_launcher.ico"))
+            }
+            linux {
+                iconFile.set(project.file("src/desktopMain/ic_launcher.png"))
+            }
         }
     }
 }
