@@ -6,7 +6,8 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -17,10 +18,9 @@ import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 import io.github.ilikeyourhat.happinesstracker.navigation.Screen
 import io.github.ilikeyourhat.happinesstracker.ui.BottomNavigationBar
 import io.github.ilikeyourhat.happinesstracker.ui.history.HistoryScreen
-
 import io.github.ilikeyourhat.happinesstracker.ui.home.HomeScreen
 import io.github.ilikeyourhat.happinesstracker.ui.settings.SettingsScreen
-import io.github.ilikeyourhat.happinesstracker.ui.StatsScreen
+import io.github.ilikeyourhat.happinesstracker.ui.stats.StatsScreen
 
 @Composable
 fun App(

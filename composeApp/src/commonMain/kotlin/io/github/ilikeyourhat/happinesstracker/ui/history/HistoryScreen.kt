@@ -21,6 +21,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import io.github.ilikeyourhat.happinesstracker.di.AppGraph
+import io.github.ilikeyourhat.happinesstracker.domain.HappinessEntry
+import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
+import kotlinx.datetime.LocalDate
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun HistoryScreen(appGraph: AppGraph) {
@@ -33,19 +37,21 @@ fun HistoryScreen(appGraph: AppGraph) {
 fun HistoryScreen(uiState: HistoryUiState) {
     Column(
         modifier = Modifier.fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(8.dp)
     ) {
         Text(
-            text = "History Screen",
+            text = "History",
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
                 .padding(8.dp),
         )
         LazyColumn(
             modifier = Modifier.fillMaxWidth()
                 .weight(1f)
                 .padding(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(uiState.historyItems.size) { index ->
                 val item = uiState.historyItems[index]
@@ -73,5 +79,50 @@ fun HistoryScreen(uiState: HistoryUiState) {
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun HistoryScreenPreview_Full() {
+    MaterialTheme {
+        HistoryScreen(
+            HistoryUiState(
+                historyItems = listOf(
+                    HappinessEntry(
+                        date = LocalDate.parse("2024-06-01"),
+                        happinessLevel = HappinessLevel.VERY_HAPPY
+                    ),
+                    HappinessEntry(
+                        date = LocalDate.parse("2024-06-02"),
+                        happinessLevel = HappinessLevel.HAPPY
+                    ),
+                    HappinessEntry(
+                        date = LocalDate.parse("2024-06-03"),
+                        happinessLevel = HappinessLevel.NEUTRAL
+                    ),
+                    HappinessEntry(
+                        date = LocalDate.parse("2024-06-04"),
+                        happinessLevel = HappinessLevel.UNHAPPY
+                    ),
+                    HappinessEntry(
+                        date = LocalDate.parse("2024-06-05"),
+                        happinessLevel = HappinessLevel.VERY_UNHAPPY
+                    ),
+                )
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+fun HistoryScreenPreview_Empty() {
+    MaterialTheme {
+        HistoryScreen(
+            HistoryUiState(
+                historyItems = emptyList()
+            )
+        )
     }
 }

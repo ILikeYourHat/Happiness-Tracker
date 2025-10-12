@@ -1,5 +1,6 @@
 package io.github.ilikeyourhat.happinesstracker.ui.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +23,7 @@ import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
 import io.github.ilikeyourhat.happinesstracker.ui.HappinessScale
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun HomeScreen(appGraph: AppGraph) {
@@ -40,6 +42,7 @@ fun HomeScreen(
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
@@ -54,6 +57,30 @@ fun HomeScreen(
             onHappinessSelected = { level ->
                 onHappinessLevelClicked(level)
             }
+        )
+    }
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview_Selected() {
+    MaterialTheme {
+        HomeScreen(
+            uiState = HomeUiState(
+                selectedHappinessLevel = HappinessLevel.HAPPY,
+            ),
+            onHappinessLevelClicked = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview_Unselected() {
+    MaterialTheme {
+        HomeScreen(
+            uiState = HomeUiState(),
+            onHappinessLevelClicked = {}
         )
     }
 }
