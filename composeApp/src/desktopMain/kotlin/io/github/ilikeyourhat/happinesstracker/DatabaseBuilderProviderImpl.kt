@@ -15,7 +15,7 @@ class DatabaseBuilderProviderImpl : DatabaseBuilderProvider {
         val appDir = AppDirsFactory.getInstance()
             .getUserDataDir("HappinessTracker", null, "ILikeYourHat")
 
-        val dbFile = File(appDir, "room.db")
+        val dbFile = File(appDir, AppDatabase.DATABASE_FILE)
         return Room.databaseBuilder<AppDatabase>(
             name = dbFile.absolutePath,
         )

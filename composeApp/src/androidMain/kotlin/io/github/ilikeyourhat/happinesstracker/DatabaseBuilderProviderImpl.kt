@@ -13,7 +13,7 @@ class DatabaseBuilderProviderImpl(
 ): DatabaseBuilderProvider {
 
     override fun provideDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
-        val dbFile = context.getDatabasePath("my_room.db")
+        val dbFile = context.getDatabasePath(AppDatabase.DATABASE_FILE)
         return Room.databaseBuilder<AppDatabase>(
             context = context,
             name = dbFile.absolutePath
