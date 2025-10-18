@@ -8,10 +8,12 @@ import io.github.ilikeyourhat.happinesstracker.domain.db.DatabaseFactory
 import io.github.ilikeyourhat.happinesstracker.domain.db.HappinessDao
 import io.github.ilikeyourhat.happinesstracker.ui.history.HistoryViewModel
 import io.github.ilikeyourhat.happinesstracker.ui.home.HomeViewModel
+import io.github.ilikeyourhat.happinesstracker.ui.stats.StatsViewModel
 
 interface AppGraph {
     val historyViewModel: HistoryViewModel
     val homeViewModel: HomeViewModel
+    val statsViewModel: StatsViewModel
 
     @Provides
     @SingleIn(AppScope::class)

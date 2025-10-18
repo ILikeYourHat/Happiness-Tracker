@@ -45,7 +45,7 @@ fun App(
                     HomeScreen(appGraph)
                 }
                 composable(route = Screen.Stats.route) {
-                    StatsScreen()
+                    StatsScreen(appGraph)
                 }
                 composable(route = Screen.History.route) {
                     HistoryScreen(appGraph)
