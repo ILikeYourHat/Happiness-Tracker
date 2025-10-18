@@ -14,6 +14,7 @@ class HistoryViewModel(
 ) : ViewModel() {
 
     val uiState = database.getHappinessLevelHistoryUpdates()
+        .map { entries -> entries.sortedByDescending { it.date } }
         .map { historyItems -> HistoryUiState(historyItems) }
         .stateIn(
             scope = viewModelScope,
