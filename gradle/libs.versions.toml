@@ -6,7 +6,7 @@ android-targetSdk = "36"
 androidx-activity = "1.11.0"
 androidx-lifecycle = "2.9.5"
 androidx-navigation = "2.9.1"
-androidx-room = "2.8.2"
+androidx-room = "2.8.3"
 androidx-sqliteBundled = "2.6.1"
 appdirs = "1.5.0"
 
@@ -14,12 +14,12 @@ caupain = "1.6.1"
 compose-hotReload = "1.0.0-rc02"
 compose-multiplatform = "1.9.1"
 
-kotlin = "2.2.20"
+kotlin = "2.2.21"
 kotlinx-coroutines = "1.10.2"
 kotlinx-datetime = "0.7.1"
-ksp = "2.2.20-2.0.4"
+ksp = "2.3.0"
 
-metro = "0.7.0"
+metro = "0.7.2"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
