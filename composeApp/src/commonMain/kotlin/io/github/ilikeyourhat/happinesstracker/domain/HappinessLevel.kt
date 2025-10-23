@@ -9,6 +9,7 @@ import androidx.compose.material.icons.filled.SentimentVerySatisfied
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 
+@Suppress("MagicNumber")
 enum class HappinessLevel(
     val displayName: String,
     val icon: ImageVector,

@@ -15,7 +15,10 @@ fun main() = application {
         title = "Happiness Tracker",
         icon = painterResource(Res.drawable.ic_launcher)
     ) {
-        window.minimumSize = Dimension(640, 480)
+        window.minimumSize = Dimension(WINDOW_WIDTH, WINDOW_HEIGH)
         App(appGraph)
     }
 }
+
+const val WINDOW_WIDTH = 640
+const val WINDOW_HEIGH = 480

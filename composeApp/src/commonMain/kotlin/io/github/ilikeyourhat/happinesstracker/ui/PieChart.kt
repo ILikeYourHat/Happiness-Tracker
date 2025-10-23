@@ -9,8 +9,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-data class PieChartData(val name: String, val value: Int, val color: Color)
-
 @Composable
 fun PieChart(
     entries: List<PieChartData>,
@@ -23,7 +21,7 @@ fun PieChart(
             drawArc(
                 color = entry.color,
                 startAngle = startAngles[index],
-                sweepAngle = entry.value / total * 360f,
+                sweepAngle = entry.value / total * FULL_CIRCLE,
                 useCenter = true,
                 topLeft = Offset.Zero,
                 size = this.size
@@ -36,11 +34,14 @@ fun calculateStartAngles(entries: List<PieChartData>): List<Float> {
     var totalPercentage = 0f
     val total = entries.sumOf { it.value }.toFloat()
     return entries.map { entry ->
-        val startAngle = totalPercentage * 360 - 90f
+        val startAngle = totalPercentage * FULL_CIRCLE + START_ROTATION
         totalPercentage += entry.value / total
         startAngle
     }
 }
+
+const val FULL_CIRCLE = 360f
+const val START_ROTATION = - 90f
 
 @Preview
 @Composable

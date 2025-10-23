@@ -1,3 +1,4 @@
+import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -7,6 +8,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose.hotReload)
     alias(libs.plugins.compose.multiplatform)
+    alias(libs.plugins.detekt)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.ksp)
     alias(libs.plugins.metro)
@@ -15,7 +17,7 @@ plugins {
 kotlin {
     androidTarget {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget = JvmTarget.JVM_11
         }
     }
 
@@ -85,6 +87,17 @@ android {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    config.setFrom("$rootDir/config/detekt.yml")
+}
+
+tasks.withType<Detekt> {
+    jvmTarget = "11"
+    tasks.getByName("check").dependsOn(this)
+    exclude { it.file.path.contains("${File.separator}generated${File.separator}") }
 }
 
 dependencies {
