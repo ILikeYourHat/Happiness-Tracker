@@ -41,7 +41,7 @@ fun calculateStartAngles(entries: List<PieChartData>): List<Float> {
 }
 
 const val FULL_CIRCLE = 360f
-const val START_ROTATION = - 90f
+const val START_ROTATION = -90f
 
 @Preview
 @Composable

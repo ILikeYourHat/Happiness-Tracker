@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 @Inject
 class HomeViewModel(
     private val database: HappinessDatabase
-): ViewModel() {
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState = _uiState.asStateFlow()

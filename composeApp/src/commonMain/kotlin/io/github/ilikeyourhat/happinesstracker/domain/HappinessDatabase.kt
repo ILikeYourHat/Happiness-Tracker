@@ -40,7 +40,7 @@ class HappinessDatabase(
         return happinessDao.observe()
             .map { entities ->
                 entities.map { entity -> HappinessEntry(entity.date, entity.level) }
-                .sortedBy { it.date }
+                    .sortedBy { it.date }
             }
     }
 

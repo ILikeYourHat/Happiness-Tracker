@@ -14,10 +14,10 @@ class StatsViewModel(
 ) : ViewModel() {
 
     val uiState = database.getHappinessLevelHistoryUpdates()
-        .map { items -> items
-            .groupBy { it.happinessLevel }
-            .map { it.key to it.value.size }
-            .sortedBy { it.first }
+        .map { items ->
+            items.groupBy { it.happinessLevel }
+                .map { it.key to it.value.size }
+                .sortedBy { it.first }
         }
         .map { StatsUiState(it) }
         .stateIn(

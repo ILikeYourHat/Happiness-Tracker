@@ -10,7 +10,7 @@ import io.github.ilikeyourhat.happinesstracker.domain.db.DatabaseBuilderProvider
 @Inject()
 class DatabaseBuilderProviderImpl(
     private val context: Context
-): DatabaseBuilderProvider {
+) : DatabaseBuilderProvider {
 
     override fun provideDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
         val dbFile = context.getDatabasePath(AppDatabase.DATABASE_FILE)

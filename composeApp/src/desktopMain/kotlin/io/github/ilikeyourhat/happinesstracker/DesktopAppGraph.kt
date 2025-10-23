@@ -12,5 +12,5 @@ interface DesktopAppGraph : AppGraph {
     @Provides
     private fun providesDatabaseBuilder(
         impl: DatabaseBuilderProviderImpl
-    ) : DatabaseBuilderProvider = impl
+    ): DatabaseBuilderProvider = impl
 }
