@@ -15,7 +15,8 @@ import io.github.ilikeyourhat.happinesstracker.navigation.Screen
 @Composable
 fun BottomNavigationBar(
     currentRoute: String,
-    onItemClick: (Screen) -> Unit
+    onItemClick: (Screen) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val items = listOf(
         Screen.Home,
@@ -26,7 +27,7 @@ fun BottomNavigationBar(
     val isCurrentScreen: (Screen) -> Boolean = { it.route == currentRoute }
 
     NavigationBar(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
             .safeContentPadding(),
     ) {
         items.forEach { navigationItem ->

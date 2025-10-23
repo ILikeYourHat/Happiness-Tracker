@@ -24,14 +24,16 @@ import io.github.ilikeyourhat.happinesstracker.ui.PieChartData
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun StatsScreen(appGraph: AppGraph) {
-    val viewModel = viewModel { appGraph.statsViewModel }
+fun StatsScreen(
+    appGraph: AppGraph,
+    viewModel: StatsViewModel = viewModel { appGraph.statsViewModel }
+) {
     val state by viewModel.uiState.collectAsState()
     StatsScreen(state)
 }
 
 @Composable
-fun StatsScreen(state: StatsUiState) {
+private fun StatsScreen(state: StatsUiState) {
     Column(
         modifier = Modifier.fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
@@ -74,7 +76,7 @@ fun StatsScreen(state: StatsUiState) {
 
 @Preview
 @Composable
-fun StatsScreenPreview_Empty() {
+private fun StatsScreenPreview_Empty() {
     MaterialTheme {
         StatsScreen(StatsUiState())
     }
@@ -82,7 +84,7 @@ fun StatsScreenPreview_Empty() {
 
 @Preview
 @Composable
-fun StatsScreenPreview_WithData() {
+private fun StatsScreenPreview_WithData() {
     MaterialTheme {
         StatsScreen(
             StatsUiState(

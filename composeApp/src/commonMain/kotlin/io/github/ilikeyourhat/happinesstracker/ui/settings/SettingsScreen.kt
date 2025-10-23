@@ -18,10 +18,12 @@ import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SettingsScreen() {
+fun SettingsScreen(
+    modifier: Modifier = Modifier
+) {
     val uriHandler = LocalUriHandler.current
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -47,7 +49,7 @@ fun SettingsScreen() {
 
 @Preview
 @Composable
-fun SettingsScreenPreview() {
+private fun SettingsScreenPreview() {
     MaterialTheme {
         SettingsScreen()
     }

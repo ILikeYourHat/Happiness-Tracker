@@ -26,8 +26,10 @@ import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun HomeScreen(appGraph: AppGraph) {
-    val viewModel = viewModel { appGraph.homeViewModel }
+fun HomeScreen(
+    appGraph: AppGraph,
+    viewModel: HomeViewModel = viewModel { appGraph.homeViewModel }
+) {
     val state by viewModel.uiState.collectAsState()
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
         viewModel.onResume()
@@ -38,10 +40,11 @@ fun HomeScreen(appGraph: AppGraph) {
 @Composable
 fun HomeScreen(
     uiState: HomeUiState,
-    onHappinessLevelClicked: (HappinessLevel) -> Unit,
+    onHappinessLevelClick: (HappinessLevel) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -54,8 +57,8 @@ fun HomeScreen(
         )
         HappinessScale(
             selectedLevel = uiState.selectedHappinessLevel,
-            onHappinessSelected = { level ->
-                onHappinessLevelClicked(level)
+            onHappinessSelect = { level ->
+                onHappinessLevelClick(level)
             }
         )
     }
@@ -63,24 +66,24 @@ fun HomeScreen(
 
 @Preview
 @Composable
-fun HomeScreenPreview_Selected() {
+private fun HomeScreenPreview_Selected() {
     MaterialTheme {
         HomeScreen(
             uiState = HomeUiState(
                 selectedHappinessLevel = HappinessLevel.HAPPY,
             ),
-            onHappinessLevelClicked = {}
+            onHappinessLevelClick = {}
         )
     }
 }
 
 @Preview
 @Composable
-fun HomeScreenPreview_Unselected() {
+private fun HomeScreenPreview_Unselected() {
     MaterialTheme {
         HomeScreen(
             uiState = HomeUiState(),
-            onHappinessLevelClicked = {}
+            onHappinessLevelClick = {}
         )
     }
 }

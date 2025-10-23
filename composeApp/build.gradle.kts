@@ -107,6 +107,7 @@ dependencies {
     ).forEach {
         add(it, libs.androidx.room.compiler)
     }
+    detektPlugins(libs.detekt.compose)
     detektPlugins(libs.detekt.formatting)
     debugImplementation(compose.uiTooling)
 }

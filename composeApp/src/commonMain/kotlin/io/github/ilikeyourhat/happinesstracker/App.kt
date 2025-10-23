@@ -25,13 +25,14 @@ import io.github.ilikeyourhat.happinesstracker.ui.stats.StatsScreen
 @Composable
 fun App(
     appGraph: AppGraph,
-    navController: NavHostController = rememberNavController()
+    modifier: Modifier = Modifier
 ) {
+    val navController: NavHostController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = backStackEntry?.destination?.route ?: Screen.Home.route
     MaterialTheme {
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = modifier.fillMaxSize()
         ) {
             NavHost(
                 navController = navController,

@@ -45,7 +45,7 @@ const val START_ROTATION = -90f
 
 @Preview
 @Composable
-fun PieChartPreview() {
+private fun PieChartPreview() {
     val data = listOf(
         PieChartData("A", 30, Color.Red),
         PieChartData("B", 20, Color.Green),

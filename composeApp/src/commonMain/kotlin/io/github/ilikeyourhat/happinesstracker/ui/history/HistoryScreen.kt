@@ -27,16 +27,21 @@ import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun HistoryScreen(appGraph: AppGraph) {
-    val viewModel = viewModel { appGraph.historyViewModel }
+fun HistoryScreen(
+    appGraph: AppGraph,
+    viewModel: HistoryViewModel = viewModel { appGraph.historyViewModel }
+) {
     val state by viewModel.uiState.collectAsState()
     HistoryScreen(state)
 }
 
 @Composable
-fun HistoryScreen(uiState: HistoryUiState) {
+fun HistoryScreen(
+    uiState: HistoryUiState,
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .padding(8.dp)
     ) {
@@ -84,7 +89,7 @@ fun HistoryScreen(uiState: HistoryUiState) {
 
 @Preview
 @Composable
-fun HistoryScreenPreview_Full() {
+private fun HistoryScreenPreview_Full() {
     MaterialTheme {
         HistoryScreen(
             HistoryUiState(
@@ -117,7 +122,7 @@ fun HistoryScreenPreview_Full() {
 
 @Preview
 @Composable
-fun HistoryScreenPreview_Empty() {
+private fun HistoryScreenPreview_Empty() {
     MaterialTheme {
         HistoryScreen(
             HistoryUiState(
