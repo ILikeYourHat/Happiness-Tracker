@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.androidx.room)
+    alias(libs.plugins.axion.release)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose.hotReload)
     alias(libs.plugins.compose.multiplatform)
@@ -66,8 +67,8 @@ android {
         applicationId = "io.github.ilikeyourhat.happinesstracker"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = scmVersion.version.toVersionCode()
+        versionName = scmVersion.version
     }
     packaging {
         resources {
@@ -83,6 +84,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+}
+
+private fun String.toVersionCode(): Int {
+    val semVerRegex = """(\d+)\.(\d{1,2})\.(\d{1,2})(\D.*)?""".toRegex()
+    val groups = semVerRegex.matchEntire(this)?.destructured?.toList()
+        ?: throw GradleException("Version must be in SemVer format, but was $this")
+    val (major, minor, patch) = groups.take(3).map { it.toInt() }
+    return major * 10000 + minor * 100 + patch
 }
 
 room {
@@ -119,7 +128,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Msi, TargetFormat.Deb)
             packageName = "HappinessTracker"
-            packageVersion = "1.0.0"
+            packageVersion = scmVersion.undecoratedVersion
             licenseFile.set(rootProject.file("LICENSE"))
 
             windows {
