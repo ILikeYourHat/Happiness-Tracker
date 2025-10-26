@@ -3,6 +3,7 @@ package io.github.ilikeyourhat.happinesstracker.di
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.Provides
 import dev.zacsweers.metro.SingleIn
+import io.github.ilikeyourhat.happinesstracker.domain.HappinessDatabase
 import io.github.ilikeyourhat.happinesstracker.domain.db.AppDatabase
 import io.github.ilikeyourhat.happinesstracker.domain.db.DatabaseFactory
 import io.github.ilikeyourhat.happinesstracker.domain.db.HappinessDao
@@ -14,6 +15,7 @@ interface AppGraph {
     val historyViewModel: HistoryViewModel
     val homeViewModel: HomeViewModel
     val statsViewModel: StatsViewModel
+    val happinessDatabase: HappinessDatabase
 
     @Provides
     @SingleIn(AppScope::class)

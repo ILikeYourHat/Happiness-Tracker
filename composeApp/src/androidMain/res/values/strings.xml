@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Happiness Tracker</string>
+    <string name="daily_notification_channel_name">Daily notifications</string>
 </resources>

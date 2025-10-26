@@ -47,6 +47,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation("androidx.work:work-runtime-ktx:2.11.0")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

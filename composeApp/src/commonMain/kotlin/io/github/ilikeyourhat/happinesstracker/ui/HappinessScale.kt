@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun HappinessScale(
@@ -71,7 +72,7 @@ fun HappinessButton(
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
-        Icon(level.icon, level.displayName)
+        Icon(painterResource(level.icon), level.displayName)
     }
 }
 

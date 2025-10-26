@@ -24,6 +24,7 @@ import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessEntry
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
 import kotlinx.datetime.LocalDate
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -71,7 +72,7 @@ fun HistoryScreen(
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(item.happinessLevel.icon, null)
+                    Icon(painterResource(item.happinessLevel.icon), null)
                     Text(
                         text = item.date.toString(),
                         style = MaterialTheme.typography.headlineSmall
