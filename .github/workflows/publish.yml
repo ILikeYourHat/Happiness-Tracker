@@ -23,7 +23,9 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Decode Keystore
-        run: 'echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 -d > keystore/keystore.jks'
+        run: |
+          mkdir -p keystore
+          echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 -d > keystore/keystore.jks
 
       - name: Build release project
         run: ./gradlew assembleRelease
