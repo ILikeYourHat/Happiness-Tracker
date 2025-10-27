@@ -8,6 +8,7 @@ androidx-lifecycle = "2.9.5"
 androidx-navigation = "2.9.1"
 androidx-room = "2.8.3"
 androidx-sqliteBundled = "2.6.1"
+androidx-work = "2.11.0"
 appdirs = "1.5.0"
 axion-release = "1.21.0"
 
@@ -33,6 +34,7 @@ androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navi
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
 androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "androidx-sqliteBundled" }
+androidx-work = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-work" }
 appdirs = { module = "net.harawata:appdirs", version.ref = "appdirs" }
 
 detekt-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detekt-compose" }
