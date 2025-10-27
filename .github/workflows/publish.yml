@@ -5,6 +5,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # To be able to add artifacts to the release
 
     steps:
       - name: Checkout project
