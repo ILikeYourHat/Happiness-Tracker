@@ -1,7 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
 rootProject.name = "HappinessTracker"
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
     repositories {
