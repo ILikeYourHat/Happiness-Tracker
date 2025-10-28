@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
+    android:layout_gravity="center"
     android:orientation="vertical">
 
     <TextView
+        style="@style/TextAppearance.Compat.Notification.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="How are you feeling today?"
-        android:textAppearance="@android:style/TextAppearance.Large" />
+        android:layout_marginBottom="4dp"
+        android:text="How are you feeling today?" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
@@ -24,7 +23,6 @@
             android:id="@+id/btn1"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
             android:background="@drawable/ic_image_button_background"
             android:backgroundTint="@color/very_happy"
             android:src="@drawable/ic_very_happy" />
@@ -33,7 +31,8 @@
             android:id="@+id/btn2"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:background="@drawable/ic_image_button_background"
             android:backgroundTint="@color/happy"
             android:src="@drawable/ic_happy" />
@@ -42,7 +41,6 @@
             android:id="@+id/btn3"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
             android:background="@drawable/ic_image_button_background"
             android:backgroundTint="@color/neutral"
             android:src="@drawable/ic_neutral" />
@@ -51,7 +49,8 @@
             android:id="@+id/btn4"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:background="@drawable/ic_image_button_background"
             android:backgroundTint="@color/unhappy"
             android:src="@drawable/ic_unhappy" />
@@ -60,7 +59,6 @@
             android:id="@+id/btn5"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
             android:background="@drawable/ic_image_button_background"
             android:backgroundTint="@color/very_unhappy"
             android:src="@drawable/ic_very_unhappy" />

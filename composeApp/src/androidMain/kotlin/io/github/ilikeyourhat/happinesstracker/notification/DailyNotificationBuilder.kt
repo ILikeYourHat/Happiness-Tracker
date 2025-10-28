@@ -14,24 +14,26 @@ class DailyNotificationBuilder(
 ) {
 
     fun build(): Notification {
-        val customView = RemoteViews(context.packageName, R.layout.notification_daily_mood)
-        customView.setOnClickPendingIntent(
+        val customView = RemoteViews(context.packageName, R.layout.notification_daily_mood_small)
+
+        val customBigView = RemoteViews(context.packageName, R.layout.notification_daily_mood)
+        customBigView.setOnClickPendingIntent(
             R.id.btn1,
             createPendingIntent(HappinessLevel.VERY_HAPPY)
         )
-        customView.setOnClickPendingIntent(
+        customBigView.setOnClickPendingIntent(
             R.id.btn2,
             createPendingIntent(HappinessLevel.HAPPY)
         )
-        customView.setOnClickPendingIntent(
+        customBigView.setOnClickPendingIntent(
             R.id.btn3,
             createPendingIntent(HappinessLevel.NEUTRAL)
         )
-        customView.setOnClickPendingIntent(
+        customBigView.setOnClickPendingIntent(
             R.id.btn4,
             createPendingIntent(HappinessLevel.UNHAPPY)
         )
-        customView.setOnClickPendingIntent(
+        customBigView.setOnClickPendingIntent(
             R.id.btn5,
             createPendingIntent(HappinessLevel.VERY_UNHAPPY)
         )
@@ -40,6 +42,8 @@ class DailyNotificationBuilder(
             .setSmallIcon(R.drawable.ic_very_happy)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
             .setCustomContentView(customView)
+            .setCustomBigContentView(customBigView)
+            .setCustomHeadsUpContentView(customBigView)
             .setAutoCancel(true)
             .build()
     }
@@ -50,7 +54,7 @@ class DailyNotificationBuilder(
 
         return PendingIntent.getBroadcast(
             context,
-            0,
+            level.ordinal,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
