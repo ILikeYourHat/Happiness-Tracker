@@ -16,7 +16,7 @@ fun setUpDailyNotifications(context: Context) {
         .build()
     workManager.enqueueUniquePeriodicWork(
         DAILY_NOTIFICATION_WORK_NAME,
-        ExistingPeriodicWorkPolicy.REPLACE,
+        ExistingPeriodicWorkPolicy.UPDATE,
         workRequest
     )
 
