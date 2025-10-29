@@ -114,6 +114,13 @@ private fun String.toVersionCode(): Int {
     return major * 10000 + minor * 100 + patch
 }
 
+kotlin {
+    compilerOptions {
+        allWarningsAsErrors = true
+        progressiveMode = true
+    }
+}
+
 room {
     schemaDirectory("$projectDir/schemas")
 }
