@@ -13,11 +13,16 @@ class DatabaseBuilderProviderImpl : DatabaseBuilderProvider {
 
     override fun provideDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
         val appDir = AppDirsFactory.getInstance()
-            .getUserDataDir("HappinessTracker", null, "ILikeYourHat")
+            .getUserDataDir(APP_DIRECTORY_NAME, null, APP_AUTHOR_NAME)
 
         val dbFile = File(appDir, AppDatabase.DATABASE_FILE)
         return Room.databaseBuilder<AppDatabase>(
             name = dbFile.absolutePath,
         )
+    }
+
+    private companion object {
+        const val APP_DIRECTORY_NAME = "HappinessTracker"
+        const val APP_AUTHOR_NAME = "ILikeYourHat"
     }
 }
