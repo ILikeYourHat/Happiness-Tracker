@@ -7,7 +7,7 @@ import dev.zacsweers.metro.Inject
 import io.github.ilikeyourhat.happinesstracker.domain.db.AppDatabase
 import io.github.ilikeyourhat.happinesstracker.domain.db.DatabaseBuilderProvider
 
-@Inject()
+@Inject
 class DatabaseBuilderProviderImpl(
     private val context: Context
 ) : DatabaseBuilderProvider {

@@ -18,28 +18,28 @@ class DailyNotificationBuilder(
 
         val customBigView = RemoteViews(context.packageName, R.layout.notification_daily_mood)
         customBigView.setOnClickPendingIntent(
-            R.id.btn1,
+            R.id.btn_mood_very_happy,
             createPendingIntent(HappinessLevel.VERY_HAPPY)
         )
         customBigView.setOnClickPendingIntent(
-            R.id.btn2,
+            R.id.btn_mood_happy,
             createPendingIntent(HappinessLevel.HAPPY)
         )
         customBigView.setOnClickPendingIntent(
-            R.id.btn3,
+            R.id.btn_mood_neutral,
             createPendingIntent(HappinessLevel.NEUTRAL)
         )
         customBigView.setOnClickPendingIntent(
-            R.id.btn4,
+            R.id.btn_mood_unhappy,
             createPendingIntent(HappinessLevel.UNHAPPY)
         )
         customBigView.setOnClickPendingIntent(
-            R.id.btn5,
+            R.id.btn_mood_very_unhappy,
             createPendingIntent(HappinessLevel.VERY_UNHAPPY)
         )
 
         return NotificationCompat.Builder(context, DAILY_CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_very_happy)
+            .setSmallIcon(R.drawable.ic_mood_very_happy)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
             .setCustomContentView(customView)
             .setCustomBigContentView(customBigView)

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="notification_mood_button_size">48dp</dimen>
+    <dimen name="notification_mood_button_margin_horizontal">4dp</dimen>
+    <dimen name="notification_mood_title_margin_bottom">4dp</dimen>
+</resources>

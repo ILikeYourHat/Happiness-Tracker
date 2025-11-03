@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:layout_gravity="center"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
         style="@style/TextAppearance.Compat.Notification.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="How are you feeling today?" />
+        android:layout_marginBottom="@dimen/notification_mood_title_margin_bottom"
+        android:text="@string/daily_notification_title" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -20,77 +20,54 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/btn1"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:id="@+id/btn_mood_very_happy"
+            android:layout_width="@dimen/notification_mood_button_size"
+            android:layout_height="@dimen/notification_mood_button_size"
             android:background="@drawable/ic_image_button_background"
-            android:backgroundTint="@color/very_happy"
-            android:src="@drawable/ic_very_happy" />
+            android:backgroundTint="@color/mood_very_happy"
+            android:contentDescription="@string/mood_very_happy"
+            android:src="@drawable/ic_mood_very_happy" />
 
         <ImageButton
-            android:id="@+id/btn2"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
+            android:id="@+id/btn_mood_happy"
+            android:layout_width="@dimen/notification_mood_button_size"
+            android:layout_height="@dimen/notification_mood_button_size"
+            android:layout_marginStart="@dimen/notification_mood_button_margin_horizontal"
+            android:layout_marginEnd="@dimen/notification_mood_button_margin_horizontal"
             android:background="@drawable/ic_image_button_background"
-            android:backgroundTint="@color/happy"
-            android:src="@drawable/ic_happy" />
+            android:backgroundTint="@color/mood_happy"
+            android:contentDescription="@string/mood_happy"
+            android:src="@drawable/ic_mood_happy" />
 
         <ImageButton
-            android:id="@+id/btn3"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:id="@+id/btn_mood_neutral"
+            android:layout_width="@dimen/notification_mood_button_size"
+            android:layout_height="@dimen/notification_mood_button_size"
             android:background="@drawable/ic_image_button_background"
-            android:backgroundTint="@color/neutral"
-            android:src="@drawable/ic_neutral" />
+            android:backgroundTint="@color/mood_neutral"
+            android:contentDescription="@string/mood_neutral"
+            android:src="@drawable/ic_mood_neutral" />
 
         <ImageButton
-            android:id="@+id/btn4"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
+            android:id="@+id/btn_mood_unhappy"
+            android:layout_width="@dimen/notification_mood_button_size"
+            android:layout_height="@dimen/notification_mood_button_size"
+            android:layout_marginStart="@dimen/notification_mood_button_margin_horizontal"
+            android:layout_marginEnd="@dimen/notification_mood_button_margin_horizontal"
             android:background="@drawable/ic_image_button_background"
-            android:backgroundTint="@color/unhappy"
-            android:src="@drawable/ic_unhappy" />
+            android:backgroundTint="@color/mood_unhappy"
+            android:contentDescription="@string/mood_unhappy"
+            android:src="@drawable/ic_mood_unhappy" />
 
         <ImageButton
-            android:id="@+id/btn5"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:id="@+id/btn_mood_very_unhappy"
+            android:layout_width="@dimen/notification_mood_button_size"
+            android:layout_height="@dimen/notification_mood_button_size"
             android:background="@drawable/ic_image_button_background"
-            android:backgroundTint="@color/very_unhappy"
-            android:src="@drawable/ic_very_unhappy" />
+            android:backgroundTint="@color/mood_very_unhappy"
+            android:contentDescription="@string/mood_very_unhappy"
+            android:src="@drawable/ic_mood_very_unhappy" />
 
     </LinearLayout>
 
 </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

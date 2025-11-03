@@ -8,12 +8,12 @@
         style="@style/TextAppearance.Compat.Notification.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="How are you feeling today?" />
+        android:text="@string/daily_notification_title" />
 
     <TextView
         style="@style/TextAppearance.Compat.Notification.Line2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Expand this notification to choose." />
+        android:text="@string/daily_notification_subtitle" />
 
 </LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="daily_notification_title">How are you feeling today?</string>
+    <string name="daily_notification_subtitle">Expand this notification to choose.</string>
+    <string name="mood_very_happy">Great</string>
+    <string name="mood_happy">Good</string>
+    <string name="mood_neutral">Okay</string>
+    <string name="mood_unhappy">Bad</string>
+    <string name="mood_very_unhappy">Terrible</string>
+</resources>
