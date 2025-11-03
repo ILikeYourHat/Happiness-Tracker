@@ -10,7 +10,7 @@ import kotlinx.datetime.LocalDate
 @Dao
 interface HappinessDao {
 
-    @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: HappinessLevelEntity)
 
     @Query("SELECT * FROM HappinessLevelEntity WHERE date = :date")

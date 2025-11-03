@@ -18,7 +18,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import happinesstracker.composeapp.generated.resources.Res
-import happinesstracker.composeapp.generated.resources.title
+import happinesstracker.composeapp.generated.resources.home_title_question
 import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
 import io.github.ilikeyourhat.happinesstracker.ui.HappinessScale
@@ -51,7 +51,7 @@ fun HomeScreen(
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
         Text(
-            text = stringResource(Res.string.title),
+            text = stringResource(Res.string.home_title_question),
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center
         )

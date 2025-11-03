@@ -20,11 +20,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import happinesstracker.composeapp.generated.resources.Res
+import happinesstracker.composeapp.generated.resources.history_title
 import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessEntry
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -47,7 +50,7 @@ fun HistoryScreen(
             .padding(8.dp)
     ) {
         Text(
-            text = "History",
+            text = stringResource(Res.string.history_title),
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
@@ -79,7 +82,7 @@ fun HistoryScreen(
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     Text(
-                        text = item.happinessLevel.displayName,
+                        text = stringResource(item.happinessLevel.displayName),
                         style = MaterialTheme.typography.headlineSmall,
                     )
                 }

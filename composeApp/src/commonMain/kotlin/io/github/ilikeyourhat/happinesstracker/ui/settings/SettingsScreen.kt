@@ -15,6 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import happinesstracker.composeapp.generated.resources.Res
+import happinesstracker.composeapp.generated.resources.settings_github_button
+import happinesstracker.composeapp.generated.resources.settings_title
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -29,7 +33,7 @@ fun SettingsScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = "Settings",
+            text = stringResource(Res.string.settings_title),
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
@@ -42,7 +46,7 @@ fun SettingsScreen(
             onClick = { uriHandler.openUri("https://github.com/ILikeYourHat/Happiness-Tracker") },
             modifier = Modifier.padding(8.dp),
         ) {
-            Text("Check me out on GitHub!")
+            Text(stringResource(Res.string.settings_github_button))
         }
     }
 }

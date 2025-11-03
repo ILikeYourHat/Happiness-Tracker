@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import io.github.ilikeyourhat.happinesstracker.navigation.Screen
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BottomNavigationBar(
@@ -41,12 +42,12 @@ fun BottomNavigationBar(
                         } else {
                             navigationItem.unSelectedIcon
                         },
-                        contentDescription = navigationItem.title,
+                        contentDescription = null,
                     )
                 },
                 label = {
                     Text(
-                        text = navigationItem.title,
+                        text = stringResource(navigationItem.title),
                         style = if (isCurrentScreen(navigationItem)) {
                             MaterialTheme.typography.labelLarge
                         } else {

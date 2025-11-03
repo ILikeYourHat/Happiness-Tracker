@@ -17,10 +17,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import happinesstracker.composeapp.generated.resources.Res
+import happinesstracker.composeapp.generated.resources.stats_empty_message
+import happinesstracker.composeapp.generated.resources.stats_title
 import io.github.ilikeyourhat.happinesstracker.di.AppGraph
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
 import io.github.ilikeyourhat.happinesstracker.ui.PieChart
 import io.github.ilikeyourhat.happinesstracker.ui.PieChartData
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -41,7 +45,7 @@ private fun StatsScreen(state: StatsUiState) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = "Stats",
+            text = stringResource(Res.string.stats_title),
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
@@ -54,7 +58,7 @@ private fun StatsScreen(state: StatsUiState) {
         ) {
             if (state.summary.isEmpty()) {
                 Text(
-                    text = "No data to display",
+                    text = stringResource(Res.string.stats_empty_message),
                     style = MaterialTheme.typography.bodyLarge,
                     textAlign = TextAlign.Center
                 )
