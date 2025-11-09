@@ -1,7 +1,6 @@
 package io.github.ilikeyourhat.happinesstracker.ui
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -12,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import io.github.ilikeyourhat.happinesstracker.navigation.Screen
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun BottomNavigationBar(
@@ -29,7 +29,6 @@ fun BottomNavigationBar(
 
     NavigationBar(
         modifier = modifier.fillMaxWidth()
-            .safeContentPadding(),
     ) {
         items.forEach { navigationItem ->
             NavigationBarItem(
@@ -60,4 +59,40 @@ fun BottomNavigationBar(
             )
         }
     }
+}
+
+@Preview
+@Composable
+private fun BottomNavigationBarPreview_Home() {
+    BottomNavigationBar(
+        currentRoute = Screen.Home.route,
+        onItemClick = {},
+    )
+}
+
+@Preview
+@Composable
+private fun BottomNavigationBarPreview_Stats() {
+    BottomNavigationBar(
+        currentRoute = Screen.Stats.route,
+        onItemClick = {},
+    )
+}
+
+@Preview
+@Composable
+private fun BottomNavigationBarPreview_History() {
+    BottomNavigationBar(
+        currentRoute = Screen.History.route,
+        onItemClick = {},
+    )
+}
+
+@Preview
+@Composable
+private fun BottomNavigationBarPreview_Settings() {
+    BottomNavigationBar(
+        currentRoute = Screen.Settings.route,
+        onItemClick = {},
+    )
 }

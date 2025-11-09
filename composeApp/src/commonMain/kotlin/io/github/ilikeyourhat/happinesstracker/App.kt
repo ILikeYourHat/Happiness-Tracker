@@ -33,6 +33,7 @@ fun App(
     MaterialTheme {
         Column(
             modifier = modifier.fillMaxSize()
+                .safeContentPadding()
         ) {
             NavHost(
                 navController = navController,
@@ -40,7 +41,6 @@ fun App(
                 modifier = Modifier
                     .weight(1f)
                     .verticalScroll(rememberScrollState())
-                    .safeContentPadding()
             ) {
                 composable(route = Screen.Home.route) {
                     HomeScreen(appGraph)
