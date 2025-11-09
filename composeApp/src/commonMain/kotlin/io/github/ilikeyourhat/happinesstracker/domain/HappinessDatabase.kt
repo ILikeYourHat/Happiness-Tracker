@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlin.collections.map
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
@@ -20,6 +21,15 @@ class HappinessDatabase(
         val today = today()
         return happinessDao.getByDate(today)
             ?.let { HappinessEntry(it.date, it.level) }
+    }
+
+    fun getHappinessLevelForTodayFlow(): Flow<HappinessEntry?> {
+        val today = today()
+        return happinessDao.observe()
+            .map { levels ->
+                levels.singleOrNull { it.date == today }
+                    ?.let { HappinessEntry(it.date, it.level) }
+            }
     }
 
     suspend fun saveHappinessLevelForToday(level: HappinessLevel?) {

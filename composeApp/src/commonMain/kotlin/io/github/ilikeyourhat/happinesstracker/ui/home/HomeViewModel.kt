@@ -5,8 +5,9 @@ import androidx.lifecycle.viewModelScope
 import dev.zacsweers.metro.Inject
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessDatabase
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 @Inject
@@ -14,20 +15,17 @@ class HomeViewModel(
     private val database: HappinessDatabase
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(HomeUiState())
-    val uiState = _uiState.asStateFlow()
-
-    fun onResume() {
-        viewModelScope.launch {
-            val entry = database.getHappinessLevelForToday()
-            _uiState.value = HomeUiState(selectedHappinessLevel = entry?.happinessLevel)
-        }
-    }
+    val uiState = database.getHappinessLevelForTodayFlow()
+        .map { HomeUiState(selectedHappinessLevel = it?.happinessLevel) }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = HomeUiState(),
+        )
 
     fun onHappinessLevelClicked(level: HappinessLevel) {
-        val currentLevel = _uiState.value.selectedHappinessLevel
+        val currentLevel = uiState.value.selectedHappinessLevel
         val updatedLevel = if (currentLevel == level) null else level
-        _uiState.value = HomeUiState(selectedHappinessLevel = updatedLevel)
         viewModelScope.launch {
             database.saveHappinessLevelForToday(updatedLevel)
         }

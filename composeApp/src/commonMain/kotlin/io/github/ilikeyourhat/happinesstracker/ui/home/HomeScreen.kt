@@ -14,8 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import happinesstracker.composeapp.generated.resources.Res
 import happinesstracker.composeapp.generated.resources.home_title_question
@@ -31,9 +29,6 @@ fun HomeScreen(
     viewModel: HomeViewModel = viewModel { appGraph.homeViewModel }
 ) {
     val state by viewModel.uiState.collectAsState()
-    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
-        viewModel.onResume()
-    }
     HomeScreen(state, viewModel::onHappinessLevelClicked)
 }
 
