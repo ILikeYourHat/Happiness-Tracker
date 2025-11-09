@@ -3,6 +3,7 @@ package io.github.ilikeyourhat.happinesstracker.ui.history
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,20 +48,20 @@ fun HistoryScreen(
     Column(
         modifier = modifier.fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .padding(8.dp)
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 0.dp),
     ) {
         Text(
             text = stringResource(Res.string.history_title),
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
-                .padding(8.dp),
+                .padding(bottom = 8.dp),
         )
         LazyColumn(
             modifier = Modifier.fillMaxWidth()
-                .weight(1f)
-                .padding(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+                .weight(1f),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            contentPadding = PaddingValues(top = 8.dp, bottom = 16.dp)
         ) {
             items(uiState.historyItems.size) { index ->
                 val item = uiState.historyItems[index]
