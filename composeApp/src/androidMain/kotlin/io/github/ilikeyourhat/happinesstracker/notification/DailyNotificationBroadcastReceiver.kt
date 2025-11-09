@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
-import io.github.ilikeyourhat.happinesstracker.HappinessTrackerApplication
 import io.github.ilikeyourhat.happinesstracker.R
+import io.github.ilikeyourhat.happinesstracker.appGraph
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -20,8 +20,8 @@ class DailyNotificationBroadcastReceiver : BroadcastReceiver() {
         val selectedIndex = intent.getIntExtra(EXTRA_MOOD_INDEX, -1)
         val selectedMood = HappinessLevel.entries.getOrNull(selectedIndex) ?: return
 
-        val appGraph = (context.applicationContext as HappinessTrackerApplication).appGraph
-        doAsync { appGraph.happinessDatabase.saveHappinessLevelForToday(selectedMood) }
+        val db = context.appGraph.happinessDatabase
+        doAsync { db.saveHappinessLevelForToday(selectedMood) }
         showConfirmationToast(context)
     }
 

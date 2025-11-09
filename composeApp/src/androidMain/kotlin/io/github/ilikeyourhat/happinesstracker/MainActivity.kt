@@ -10,8 +10,6 @@ import androidx.core.app.ActivityCompat.requestPermissions
 
 class MainActivity : ComponentActivity() {
 
-    private val appGraph by lazy { (application as HappinessTrackerApplication).appGraph }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
