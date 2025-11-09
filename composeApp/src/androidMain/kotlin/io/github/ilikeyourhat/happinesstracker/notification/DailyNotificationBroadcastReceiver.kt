@@ -3,7 +3,9 @@ package io.github.ilikeyourhat.happinesstracker.notification
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import io.github.ilikeyourhat.happinesstracker.HappinessTrackerApplication
+import io.github.ilikeyourhat.happinesstracker.R
 import io.github.ilikeyourhat.happinesstracker.domain.HappinessLevel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -20,11 +22,20 @@ class DailyNotificationBroadcastReceiver : BroadcastReceiver() {
 
         val appGraph = (context.applicationContext as HappinessTrackerApplication).appGraph
         doAsync { appGraph.happinessDatabase.saveHappinessLevelForToday(selectedMood) }
+        showConfirmationToast(context)
     }
 
     @OptIn(DelicateCoroutinesApi::class)
     fun BroadcastReceiver.doAsync(block: suspend CoroutineScope.() -> Unit) {
         val pendingResult = goAsync()
         GlobalScope.launch { block() }.invokeOnCompletion { pendingResult.finish() }
+    }
+
+    private fun showConfirmationToast(context: Context) {
+        Toast.makeText(
+            context.applicationContext,
+            R.string.daily_notification_confirmation,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
