@@ -1,7 +1,11 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.axion.release)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.metro)
 }
 
 android {
@@ -58,6 +62,14 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_11
+        allWarningsAsErrors = true
+        progressiveMode = true
+    }
+}
+
 private fun String.toVersionCode(): Int {
     val semVerRegex = """(\d+)\.(\d{1,2})\.(\d{1,2})(\D.*)?""".toRegex()
     val groups = semVerRegex.matchEntire(this)?.destructured?.toList()
@@ -70,7 +82,11 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.work)
+    implementation(libs.androidx.room.runtime)
     implementation(project(":composeApp"))
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

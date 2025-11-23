@@ -61,7 +61,7 @@ kotlin {
 }
 
 android {
-    namespace = "io.github.ilikeyourhat.happinesstracker"
+    namespace = "io.github.ilikeyourhat.happinesstracker.commmon"
     compileSdk = 36
 
     defaultConfig.minSdk = 26
