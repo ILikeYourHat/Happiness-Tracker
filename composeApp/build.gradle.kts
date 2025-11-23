@@ -62,12 +62,12 @@ kotlin {
 
 android {
     namespace = "io.github.ilikeyourhat.happinesstracker"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "io.github.ilikeyourhat.happinesstracker"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = 26
+        targetSdk = 36
         versionCode = scmVersion.version.toVersionCode()
         versionName = scmVersion.version
     }
