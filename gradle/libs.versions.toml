@@ -3,28 +3,28 @@ agp = "8.13.1"
 android-compileSdk = "36"
 android-minSdk = "26"
 android-targetSdk = "36"
-androidx-activity = "1.11.0"
+androidx-activity = "1.12.0"
 androidx-lifecycle = "2.9.6"
 androidx-navigation = "2.9.1"
-androidx-room = "2.8.3"
-androidx-sqliteBundled = "2.6.1"
+androidx-room = "2.8.4"
+androidx-sqliteBundled = "2.6.2"
 androidx-work = "2.11.0"
 appdirs = "1.5.0"
 axion-release = "1.21.0"
 
 caupain = "1.6.1"
-compose-hotReload = "1.0.0-rc03"
+compose-hotReload = "1.0.0-rc04"
 compose-multiplatform = "1.9.3"
 
 detekt = "1.23.8"
-detekt-compose = "0.4.27"
+detekt-compose = "0.4.28"
 
 kotlin = "2.2.21"
 kotlinx-coroutines = "1.10.2"
 kotlinx-datetime = "0.7.1"
-ksp = "2.3.2"
+ksp = "2.3.3"
 
-metro = "0.7.5"
+metro = "0.7.7"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
