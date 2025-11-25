@@ -40,4 +40,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            composeApp/build/outputs/apk/release/composeApp-release.apk
+            androidApp/build/outputs/apk/release/androidApp-release.apk
