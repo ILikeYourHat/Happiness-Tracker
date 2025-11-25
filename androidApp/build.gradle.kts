@@ -79,9 +79,6 @@ private fun String.toVersionCode(): Int {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.work)
     implementation(libs.androidx.room.runtime)
