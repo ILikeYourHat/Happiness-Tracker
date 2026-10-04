@@ -10,7 +10,7 @@ jobs:
       - name: Sync Secrets and Variables
         uses: cbrgm/sync-secrets-action@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.TOKEN_GITHUB }}
           target: 'ILikeYourHat/Whippet'
           secrets: |
             ANDROID_KEYSTORE=${{ secrets.ANDROID_KEYSTORE }}
